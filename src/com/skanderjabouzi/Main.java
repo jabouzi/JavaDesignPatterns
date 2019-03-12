@@ -1,5 +1,8 @@
 package com.skanderjabouzi;
 
+import com.skanderjabouzi.dependency.inv.Person;
+import com.skanderjabouzi.dependency.inv.Relationships;
+import com.skanderjabouzi.dependency.inv.Research;
 import com.skanderjabouzi.generics.GenericType;
 import com.skanderjabouzi.interfce.segr.*;
 import com.skanderjabouzi.liskov.sub.Rectangle;
@@ -107,6 +110,21 @@ public class Main {
         MutlifunctionDevice mutlifunctionDevice = new MutlifunctionDevice(new JustPrinter(), new JustScanner());
         mutlifunctionDevice.print(document);
         mutlifunctionDevice.scan(document);
+
+        System.out.println();
+
+        //DIP
+
+        Person parent = new Person("John");
+        Person child1 = new Person("Chris");
+        Person child2 = new Person("Matt");
+
+        Relationships relationships = new Relationships();
+        relationships.addParentAndChild(parent, child1);
+        relationships.addParentAndChild(parent, child2);
+
+        Research research = new Research(relationships);
+
     }
 
     public static void useIt(Rectangle r) {
